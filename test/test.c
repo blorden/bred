@@ -1,17 +1,46 @@
 /*cp1251*/
 
+/* for test sorter.c */
+
 #include "../lenib/lenib.h"
 #include <stdio.h>
 #include <string.h>
 
-int min (int a, int b)
+//this function return minimal of two int
+int min (const int a, const int b);
+
+//compare for msort
+int cmp (const char *a, const char *b);
+
+//=============================================================
+
+int main ()
+{
+
+	char* arr[] = {"cccc", "bbb"};
+
+	msort(arr, arr + 2, sizeof(char*), cmp);
+
+	printf("OK\n");
+
+	for (int i = 0; i < 2; ++i)
+		printf("%s\n", arr[i]);
+
+	return 0;
+}
+
+//=============================================================
+
+int min (const int a, const int b)
 {
 	if (a < b)
 		return a;
 	return b;
 }
 
-int cmp (char *a, char *b)
+//=============================================================
+
+int cmp (const char *a, const char *b)
 {
 	int lna = strlen(a);
 	int lnb = strlen(b);
@@ -35,15 +64,4 @@ int cmp (char *a, char *b)
 	return 1;
 }
 
-int main ()
-{
-
-	char* arr[] = {"cccc", "bbb", "aaaaa", "zzzz", "kkkkk", "MMmmMM"};
-
-	msort(arr, arr + 6, sizeof(char*), cmp);
-
-	for (int i = 0; i < 6; ++i)
-		printf("%s\n", arr[i]);
-
-	return 0;
-}
+//=============================================================
