@@ -53,6 +53,10 @@ int cmp (const char *a, const char *b)
 
     for (int i = 0; i < min(lna, lnb); ++i)
     {
+
+        assert(a + i < a + lna);
+        assert(b + i < b + lnb);
+
         if (a[i] < b[i])
             return 0;
 
