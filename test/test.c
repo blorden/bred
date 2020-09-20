@@ -22,7 +22,7 @@ int main ()
 
     char* arr[] = {"cccc", "bbb"};
 
-    msort(arr, arr + 2, sizeof(char*), cmp);
+    msort(arr, arr + SIZE, sizeof(char*), cmp);
 
     printf("OK\n");
 
@@ -32,7 +32,6 @@ int main ()
 
         printf("%s\n", arr[i]);
     }
-
 
     return 0;
 }
