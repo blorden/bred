@@ -5,6 +5,7 @@
 #include "../lenib/lenib.h"
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 
 //this function return minimal of two int
 int min (const int a, const int b);
@@ -18,13 +19,17 @@ int main ()
 {
 
     char* arr[] = {"cccc", "bbb"};
+    size_t sz = 2;
 
     msort(arr, arr + 2, sizeof(char*), cmp);
 
     printf("OK\n");
 
-    for (int i = 0; i < 2; ++i)
+    for (int i = 0; i < sz; ++i)
+    {
+        assert(arr + i < arr + sz);
         printf("%s\n", arr[i]);
+    }
 
 
     return 0;
