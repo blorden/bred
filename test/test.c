@@ -27,7 +27,9 @@ int main ()
 
     for (int i = 0; i < sz; ++i)
     {
-        assert(arr + i < arr + sz);
+        assert(i < sz);
+        assert(i >= 0);
+
         printf("%s\n", arr[i]);
     }
 
@@ -54,8 +56,8 @@ int cmp (const char *a, const char *b)
     for (int i = 0; i < min(lna, lnb); ++i)
     {
 
-        assert(a + i < a + lna);
-        assert(b + i < b + lnb);
+        assert(i < lna);
+        assert(i < lnb);
 
         if (a[i] < b[i])
             return 0;
