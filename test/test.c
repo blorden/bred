@@ -17,51 +17,52 @@ int cmp (const char *a, const char *b);
 int main ()
 {
 
-	char* arr[] = {"cccc", "bbb"};
+    char* arr[] = {"cccc", "bbb"};
 
-	msort(arr, arr + 2, sizeof(char*), cmp);
+    msort(arr, arr + 2, sizeof(char*), cmp);
 
-	printf("OK\n");
+    printf("OK\n");
 
-	for (int i = 0; i < 2; ++i)
-		printf("%s\n", arr[i]);
+    for (int i = 0; i < 2; ++i)
+        printf("%s\n", arr[i]);
 
-	return 0;
+
+    return 0;
 }
 
 //=============================================================
 
 int min (const int a, const int b)
 {
-	if (a < b)
-		return a;
-	return b;
+    if (a < b)
+        return a;
+    return b;
 }
 
 //=============================================================
 
 int cmp (const char *a, const char *b)
 {
-	int lna = strlen(a);
-	int lnb = strlen(b);
+    int lna = strlen(a);
+    int lnb = strlen(b);
 
-	for (int i = 0; i < min(lna, lnb); ++i)
-	{
-		if (a[i] < b[i])
-			return 0;
+    for (int i = 0; i < min(lna, lnb); ++i)
+    {
+        if (a[i] < b[i])
+            return 0;
 
-		if (a[i] > b[i])
-			return 1;
+        if (a[i] > b[i])
+            return 1;
 
-	}
+    }
 
-	if (lna == lnb)
-		return 2;
+    if (lna == lnb)
+        return 2;
 
-	if (lna < lnb)
-		return 0;
+    if (lna < lnb)
+        return 0;
 
-	return 1;
+    return 1;
 }
 
 //=============================================================

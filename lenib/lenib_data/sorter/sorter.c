@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stddef.h> 
 #include <stdio.h>
+#include <assert.h>
 
 //this function write bsz bytes from->to
 void wb (void *to, const void *from,
@@ -39,7 +40,7 @@ enum cmp_code
 
 //=============================================================
 
-int msort (void const *l, void const    *r, 
+int msort (void const *l, void const *r, 
             const size_t bsz, 
             int (*cmp)(const void *f, const void *s))
 {
@@ -54,6 +55,8 @@ int msort (void const *l, void const    *r,
         return 1;
 
     size_t mid = (size_t)((r - l) / sizeof(void*) / 2);
+
+    assert(l + mid * sizeof(void*) <= r);
 
     if (msort(l, l + mid * sizeof(void*), bsz, cmp) || 
             msort(l + mid * sizeof(void*), r, bsz, cmp))
@@ -70,6 +73,10 @@ int msort (void const *l, void const    *r,
 
     while (tl != l + mid * sizeof(void*) || tmid != r)
     {
+
+        assert((l + mid * sizeof(void*)) - l >= 0);
+        assert((r - tmid) >= 0);
+
         if (tmid == r)
         {
             fl
@@ -104,11 +111,15 @@ int msort (void const *l, void const    *r,
             return 1;
     }
 
+
     tl = l;
     ttop = temp;
 
+
     while (tl != r)
     {
+        assert(tl < r);
+
         wb(tl, ttop, bsz);
         ttop += sizeof(void*);
         tl   += sizeof(void*);
