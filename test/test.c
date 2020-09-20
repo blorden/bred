@@ -15,20 +15,20 @@ int cmp (const char *a, const char *b);
 
 //=============================================================
 
+const int SIZE = 2;
+
 int main ()
 {
 
     char* arr[] = {"cccc", "bbb"};
-    size_t sz = 2;
 
     msort(arr, arr + 2, sizeof(char*), cmp);
 
     printf("OK\n");
 
-    for (int i = 0; i < sz; ++i)
+    for (int i = 0; i < SIZE; ++i)
     {
-        assert(i < sz);
-        assert(i >= 0);
+        assert(0 <= i && i < SIZE);
 
         printf("%s\n", arr[i]);
     }
